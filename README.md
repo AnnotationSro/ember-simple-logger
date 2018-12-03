@@ -1,7 +1,7 @@
 ember-simple-logger
 ==============================================================================
 
-[Short description of the addon.]
+Replacement for `Ember.Logger` that is deprecated in newer Ember versions. The only reason to use this addon is when you need a callback to be called when something is logged.
 
 Installation
 ------------------------------------------------------------------------------
@@ -14,36 +14,26 @@ ember install ember-simple-logger
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+```
+  simpleLogger: service('simple-logger'),
 
+//............
+  this.get('simpleLogger').info('some text to log');
+  this.get('simpleLogger').info('you can log arguments as well', 1, 2, 3);
+```
 
-Contributing
-------------------------------------------------------------------------------
+To register a callback:
+```
+  this.get('simpleLogger').registerCallback('info', (level, msg, args) => {
+    alert(`logged - level: ${level}; msg: ${msg}, arguments: ${args}`)
+  });
+```
 
-### Installation
-
-* `git clone <repository-url>`
-* `cd ember-simple-logger`
-* `yarn install`
-
-### Linting
-
-* `yarn lint:hbs`
-* `yarn lint:js`
-* `yarn lint:js --fix`
-
-### Running tests
-
-* `ember test` – Runs the test suite on the current Ember version
-* `ember test --server` – Runs the test suite in "watch mode"
-* `ember try:each` – Runs the test suite against multiple Ember versions
-
-### Running the dummy application
-
-* `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+Supported log levels:
+* trace → `this.get('simpleLogger').trace(...);`
+* debug → `this.get('simpleLogger').debug(...);`
+* info → `this.get('simpleLogger').info(...);`
+* error → `this.get('simpleLogger').error(...);`
 
 License
 ------------------------------------------------------------------------------
