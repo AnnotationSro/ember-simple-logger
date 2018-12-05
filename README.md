@@ -33,6 +33,7 @@ Supported log levels:
 * trace → `this.get('simpleLogger').trace(...);`
 * debug → `this.get('simpleLogger').debug(...);`
 * info → `this.get('simpleLogger').info(...);`
+* warn → `this.get('simpleLogger').warn(...);`
 * error → `this.get('simpleLogger').error(...);`
 
 License

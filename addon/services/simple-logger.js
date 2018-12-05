@@ -12,7 +12,8 @@ export default Service.extend({
       info: window.console.info,
       debug: window.console.debug,
       trace: window.console.trace,
-      error: window.console.error
+      error: window.console.error,
+      warn: window.console.warn
     };
 
   },
@@ -27,6 +28,9 @@ export default Service.extend({
     this._log('debug', msg, args);
   },
   trace(msg, ...args) {
+    this._log('trace', msg, args);
+  },
+  warn(msg, ...args) {
     this._log('trace', msg, args);
   },
 
