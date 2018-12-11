@@ -1,4 +1,5 @@
 import Service from '@ember/service';
+// import {isNone} from '@ember/utils';
 
 export default Service.extend({
 
@@ -7,13 +8,17 @@ export default Service.extend({
 
   init() {
     this._super(...arguments);
+
+
     this.callbackMap = {};
+
+    let fallbackFn = window.console.log || function() {};
     this.logFunctions = {
-      info: window.console.info,
-      debug: window.console.debug,
-      trace: window.console.trace,
-      error: window.console.error,
-      warn: window.console.warn
+      info: window.console.info || fallbackFn,
+      debug: window.console.debug || fallbackFn,
+      trace: window.console.trace || fallbackFn,
+      error: window.console.error || fallbackFn,
+      warn: window.console.warn || fallbackFn
     };
 
   },
@@ -31,19 +36,23 @@ export default Service.extend({
     this._log('trace', msg, args);
   },
   warn(msg, ...args) {
-    this._log('trace', msg, args);
+    this._log('warn', msg, args);
   },
 
-  registerCallback(level, fn){
+  registerCallback(level, fn) {
     this.get('callbackMap')[level] = fn;
   },
 
   _log(level, msg, args) {
     let logMethod = this.logFunctions[level];
     if (typeof logMethod === 'function') {
-      logMethod(msg, ...args);
+      try {
+        logMethod(msg);
+      } catch (e) {
+        //error in Internet Explorer - this happens when DevTools is closed -> https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/14495220/
+        window.console.log('Fallback Logger: ' + msg, ...args);
+      }
     }
-
     let callback = this.callbackMap[level];
     if (typeof callback === 'function') {
       callback(level, msg, ...args);
