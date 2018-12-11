@@ -11,8 +11,7 @@ export default Controller.extend({
   init() {
     this._super(...arguments);
     this.get('simpleLogger').registerCallback('info', function(level, msg, args){alert(`logged - level: ${level}; msg: ${msg}, arguments: ${args}`)});
-    console.info('fhf');
-    this.get('simpleLogger').info('ahoj');
+    this.get('simpleLogger').info('hello world');
   },
 
   actions: {
