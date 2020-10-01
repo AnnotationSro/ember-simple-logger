@@ -3,6 +3,15 @@ ember-simple-logger
 
 Replacement for `Ember.Logger` that is deprecated in newer Ember versions. The only reason to use this addon is when you need a callback to be called when something is logged.
 
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v3.16 or above
+* Ember CLI v2.13 or above
+* Node.js v10 or above
+
+
 Installation
 ------------------------------------------------------------------------------
 
@@ -14,6 +23,7 @@ ember install ember-simple-logger
 Usage
 ------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 ```
   simpleLogger: service('simple-logger'),
 
@@ -35,6 +45,16 @@ Supported log levels:
 * info → `this.get('simpleLogger').info(...);`
 * warn → `this.get('simpleLogger').warn(...);`
 * error → `this.get('simpleLogger').error(...);`
+=======
+[Longer description of how to use the addon in apps.]
+
+
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
+>>>>>>> fe6a97f... v3.5.1...v3.21.2
 
 License
 ------------------------------------------------------------------------------
