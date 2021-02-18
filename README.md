@@ -45,6 +45,7 @@ Supported log levels:
 * warn → `this.get('simpleLogger').warn(...);`
 * error → `this.get('simpleLogger').error(...);`
 
+
 License
 ------------------------------------------------------------------------------
 
