@@ -3,6 +3,8 @@ ember-simple-logger
 
 Replacement for `Ember.Logger` that is deprecated in newer Ember versions. The only reason to use this addon is when you need a callback to be called when something is logged.
 
+## Warning
+This package is no longer maintained. You are probably better off without this addon either way.
 
 Compatibility
 ------------------------------------------------------------------------------
